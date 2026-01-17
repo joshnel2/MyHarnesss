@@ -1,6 +1,6 @@
-# Mirror Harness
+# Founder's Harness (Mirror System)
 
-> The Founder's Shadow - Observes, learns, and reflects your operational DNA.
+> The Founder's Shadow - Observes, learns, and crystallizes your operational DNA.
 
 The Mirror Harness is an observer system that watches how you work, captures your decision patterns, and reflects them back to you. It's designed to help you understand and codify your own leadership style.
 
@@ -43,19 +43,20 @@ The Mirror Harness is an observer system that watches how you work, captures you
 ```
 .founder_harness/
 ├── context/
-│   ├── axioms.md       # The Law - confirmed principles
-│   └── patterns.md     # Observed behaviors (candidates for axioms)
+│   ├── axioms.md           # The Constitution - immutable laws
+│   ├── identity.md         # Voice, style, persona
+│   └── patterns.md         # Learned preferences (candidates for axioms)
 │
-├── session_logs/       # Raw session data
-│   └── session_*.json  # Daily logs
+├── logs/
+│   └── session_diffs.json  # Correction log for crystallization
 │
-├── tools/
-│   └── reflect.py      # Discovery Report generator
+├── scripts/
+│   └── crystallize_memory.py  # Turns logs into axioms
 │
-└── README.md
+└── requirements.txt
 
 .cursor/rules/
-└── founder-mirror.mdc  # The active Cursor rule
+└── founder-mirror.mdc      # Active sensor rule
 ```
 
 ## Quick Start
@@ -80,14 +81,20 @@ python .founder_harness/tools/reflect.py --log-decision "Chose Postgres over Mon
 python .founder_harness/tools/reflect.py --propose "Never delay launch for cosmetic bugs"
 ```
 
-### 3. Generate Your Discovery Report
+### 3. Crystallize Your Memory
 
 ```bash
-# At end of day
-python .founder_harness/tools/reflect.py
+# Turn session logs into permanent axioms
+python .founder_harness/scripts/crystallize_memory.py
 
-# Analyze last week
-python .founder_harness/tools/reflect.py --days 7
+# Preview without writing
+python .founder_harness/scripts/crystallize_memory.py --dry-run
+
+# Require more observations before crystallizing
+python .founder_harness/scripts/crystallize_memory.py --threshold 5
+
+# Check memory status
+python .founder_harness/scripts/crystallize_memory.py --status
 ```
 
 ## The Active Learning Loop

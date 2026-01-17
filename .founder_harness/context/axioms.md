@@ -1,21 +1,19 @@
-# The Law of the Firm
+# The Constitution
 
-> These are the immutable rules that govern how this company operates.
-> The Mirror Harness enforces these axioms in every suggestion.
-> Add new axioms only through deliberate reflection, not impulse.
+> The immutable laws of this business. The Harness enforces these on every action.
+> Axioms are permanent. They are added only through crystallization, never impulse.
 
 ---
 
-## Core Axioms
+## Core Principles
 
-### Rule #1: If I haven't defined it, ask me. Do not guess.
-When facing ambiguity, stop and clarify. A wrong assumption costs more than a brief pause. Never fill gaps with invented requirements.
+1. **If undefined, ask. Do not guess.** When facing ambiguity, stop and clarify. A wrong assumption costs more than a brief pause. Never fill gaps with invented requirements.
 
 ---
 
 ## Operational Axioms
 
-<!-- New axioms are added here through the reflection process -->
+<!-- Crystallized from repeated patterns in session_diffs.json -->
 
 ---
 
@@ -37,19 +35,13 @@ When facing ambiguity, stop and clarify. A wrong assumption costs more than a br
 
 ---
 
-## Anti-Patterns (What We Never Do)
+## Anti-Patterns
 
-<!-- Explicit prohibitions learned from experience -->
-
----
-
-## Axiom Log
-
-> The Mirror Harness proposes new axioms here. Move them up when confirmed.
-
-<!-- AXIOM_PROPOSAL_ANCHOR: New proposals are appended below this line -->
+<!-- Explicit prohibitions learned from corrections -->
 
 ---
 
-*Last Updated: [DATE]*
+<!-- CRYSTALLIZE_ANCHOR: New axioms are appended above this line by crystallize_memory.py -->
+
+*Last Crystallized: Never*
 *Total Axioms: 1*

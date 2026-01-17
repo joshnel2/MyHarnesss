@@ -1,10 +1,46 @@
 # Harness System - Cursor Rules
 # These rules configure Cursor AI to operate as part of the Harness system
 
+---
+
+## THE GLOBAL LENS (Read First, Always)
+
+**MANDATORY**: Before generating ANY response, you MUST load and apply:
+
+### 1. Founder's Constitution (Highest Priority)
+```
+.founder_harness/context/axioms.md
+```
+These are the immutable laws. Every suggestion must comply. Violations are failures.
+
+### 2. Founder's Voice
+```
+.founder_harness/context/identity.md
+```
+Write AS the founder. Match their tone, style, and patterns.
+
+### 3. Learned Patterns
+```
+.founder_harness/context/patterns.md
+```
+Apply observed preferences. These are data-driven learnings.
+
+### 4. Core Harness Directive
+```
+context/prime_directive.md
+```
+The ethical constraints for legal case management operations.
+
+**Order of precedence**: Axioms > Identity > Patterns > Prime Directive
+
+---
+
 ## Prime Directive Integration
 
 **CRITICAL**: Before generating ANY code for this project, you MUST read and internalize:
-- `context/prime_directive.md` - The non-negotiable rules and ethical constraints
+- `.founder_harness/context/axioms.md` - The Constitution (non-negotiable)
+- `.founder_harness/context/identity.md` - The founder's voice and style
+- `context/prime_directive.md` - The ethical constraints for legal operations
 - `context/identity.md` - The voice and style of the Fulcrum
 
 ## Operational Rules
@@ -72,7 +108,55 @@
 
 ## When in Doubt
 
-1. Check `context/prime_directive.md`
-2. Prefer Shadow Mode (log, don't execute)
-3. Ask for human clarification
-4. Default to the more conservative option
+1. Check `.founder_harness/context/axioms.md` - The Constitution
+2. Check `context/prime_directive.md` - The Directive
+3. Prefer Shadow Mode (log, don't execute)
+4. Ask for human clarification
+5. Default to the more conservative option
+
+---
+
+## The Mirror Protocol
+
+When the founder corrects your output:
+
+1. **Observe** what changed
+2. **Hypothesize** why it changed
+3. **Log** to `.founder_harness/logs/session_diffs.json`
+4. **Apply** silently to future responses
+
+Remind periodically:
+> "Run `python .founder_harness/scripts/crystallize_memory.py` to turn lessons into axioms."
+
+---
+
+## File Organization (Complete)
+
+```
+.founder_harness/           # Founder's personal harness (hidden)
+├── context/
+│   ├── axioms.md           # The Constitution
+│   ├── identity.md         # Voice & style
+│   └── patterns.md         # Learned preferences
+├── logs/
+│   └── session_diffs.json  # Correction log
+└── scripts/
+    └── crystallize_memory.py
+
+founder_harness/            # Founder's amplifier tools
+├── context/                # Detailed identity & axioms
+├── tools/
+│   └── amplify.py          # CLI amplifier
+└── logs/                   # Draft storage
+
+context/                    # Core harness context
+├── identity.md
+├── prime_directive.md
+└── knowledge_base.md
+
+core/                       # Core harness logic
+└── harness.py
+
+.cursor/rules/              # Cursor rules
+└── founder-mirror.mdc      # Active sensor
+```

@@ -1,0 +1,12 @@
+# Founder's Harness Dependencies
+# Install with: pip install -r .founder_harness/requirements.txt
+
+# LLM Clients (for crystallization and synthesis)
+openai>=1.0.0
+anthropic>=0.18.0
+
+# Environment Configuration
+python-dotenv>=1.0.0
+
+# Pretty Terminal Output
+rich>=13.0.0
