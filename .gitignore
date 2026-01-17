@@ -85,6 +85,11 @@ founder_harness/logs/*.json
 founder_harness/logs/*.log
 !founder_harness/logs/.gitkeep
 
+# Mirror Harness session logs (contains personal decisions)
+.founder_harness/session_logs/*.json
+.founder_harness/session_logs/*.md
+!.founder_harness/session_logs/.gitkeep
+
 # ===========================================
 # OS Generated
 # ===========================================
