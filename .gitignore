@@ -80,6 +80,11 @@ logs/*.json
 logs/*.log
 !logs/.gitkeep
 
+# Founder Harness logs
+founder_harness/logs/*.json
+founder_harness/logs/*.log
+!founder_harness/logs/.gitkeep
+
 # ===========================================
 # OS Generated
 # ===========================================

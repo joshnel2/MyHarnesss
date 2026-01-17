@@ -223,6 +223,32 @@ mypy core/
 ruff check core/
 ```
 
+## Founder's Harness
+
+In addition to the core Harness for legal case management, this repository includes the **Founder's Harness** - a personal amplifier for the CEO/Founder.
+
+See [`founder_harness/README.md`](founder_harness/README.md) for full documentation.
+
+### Quick Example
+
+```bash
+# Transform rough thoughts into polished outputs
+python founder_harness/tools/amplify.py "Tell the team we're pivoting to focus on simplicity"
+
+# Different output types
+python founder_harness/tools/amplify.py --type investor "Q3 update with metrics"
+python founder_harness/tools/amplify.py --type memo "Explain the roadmap change"
+
+# Learn from your edits
+python founder_harness/tools/amplify.py --interactive-learn
+```
+
+The Founder's Harness:
+- **Ingests Intent**: Takes short, high-level commands
+- **Applies DNA**: Filters through your values, voice, and principles
+- **Executes/Drafts**: Produces outputs that sound exactly like you
+- **Learns**: When you edit outputs, it updates its understanding automatically
+
 ## Roadmap
 
 - [ ] Production mode with approval workflows
@@ -231,6 +257,7 @@ ruff check core/
 - [ ] Confidence scoring and auto-approval thresholds
 - [ ] API endpoints for external integration
 - [ ] Dashboard for Shadow Mode review
+- [ ] "Consult Founder Bot" for team access to founder's axioms
 
 ## License
 
