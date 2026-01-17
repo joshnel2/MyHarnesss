@@ -1,0 +1,267 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Legal Case Context",
+  "description": "JSON schema for legal case context used by the Harness system",
+  "type": "object",
+  "required": ["case_id", "case_type", "status"],
+  "properties": {
+    "case_id": {
+      "type": "string",
+      "description": "Unique identifier for the case",
+      "pattern": "^[A-Z]{2,4}-\\d{4}-\\d{4,6}$",
+      "examples": ["CASE-2024-001234"]
+    },
+    "case_type": {
+      "type": "string",
+      "description": "Category of legal matter",
+      "enum": [
+        "civil_litigation",
+        "criminal_defense",
+        "corporate",
+        "family_law",
+        "estate_planning",
+        "intellectual_property",
+        "employment",
+        "real_estate",
+        "immigration",
+        "other"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "description": "Current status of the case",
+      "enum": [
+        "intake",
+        "active",
+        "discovery",
+        "negotiation",
+        "trial_prep",
+        "trial",
+        "appeal",
+        "closed",
+        "on_hold"
+      ]
+    },
+    "client": {
+      "type": "object",
+      "description": "Client information (CONFIDENTIAL)",
+      "properties": {
+        "client_id": {
+          "type": "string",
+          "description": "Internal client identifier"
+        },
+        "client_type": {
+          "type": "string",
+          "enum": ["individual", "corporation", "organization", "government"]
+        },
+        "representation_type": {
+          "type": "string",
+          "enum": ["plaintiff", "defendant", "petitioner", "respondent", "advisory"]
+        }
+      },
+      "required": ["client_id", "client_type"]
+    },
+    "matter": {
+      "type": "object",
+      "description": "Matter details",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Brief title for the matter",
+          "maxLength": 200
+        },
+        "description": {
+          "type": "string",
+          "description": "Detailed description of the matter"
+        },
+        "jurisdiction": {
+          "type": "string",
+          "description": "Primary jurisdiction"
+        },
+        "court": {
+          "type": "string",
+          "description": "Court or tribunal name"
+        },
+        "docket_number": {
+          "type": "string",
+          "description": "Official court docket number"
+        },
+        "opposing_parties": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "role": { "type": "string" },
+              "counsel": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "timeline": {
+      "type": "object",
+      "description": "Key dates and deadlines",
+      "properties": {
+        "date_opened": {
+          "type": "string",
+          "format": "date",
+          "description": "Date case was opened"
+        },
+        "statute_of_limitations": {
+          "type": "string",
+          "format": "date",
+          "description": "Applicable statute of limitations deadline"
+        },
+        "next_deadline": {
+          "type": "object",
+          "properties": {
+            "date": { "type": "string", "format": "date" },
+            "description": { "type": "string" },
+            "priority": { "type": "string", "enum": ["critical", "high", "medium", "low"] }
+          }
+        },
+        "key_dates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "date": { "type": "string", "format": "date" },
+              "event": { "type": "string" },
+              "notes": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "documents": {
+      "type": "array",
+      "description": "List of associated documents",
+      "items": {
+        "type": "object",
+        "properties": {
+          "doc_id": { "type": "string" },
+          "title": { "type": "string" },
+          "type": {
+            "type": "string",
+            "enum": [
+              "pleading",
+              "motion",
+              "brief",
+              "correspondence",
+              "contract",
+              "evidence",
+              "discovery",
+              "court_order",
+              "memo",
+              "other"
+            ]
+          },
+          "date_created": { "type": "string", "format": "date" },
+          "privileged": { "type": "boolean", "default": false },
+          "confidentiality_level": {
+            "type": "string",
+            "enum": ["public", "internal", "confidential", "privileged"]
+          }
+        }
+      }
+    },
+    "tasks": {
+      "type": "array",
+      "description": "Active tasks for this case",
+      "items": {
+        "type": "object",
+        "properties": {
+          "task_id": { "type": "string" },
+          "title": { "type": "string" },
+          "description": { "type": "string" },
+          "assigned_to": { "type": "string" },
+          "due_date": { "type": "string", "format": "date" },
+          "status": {
+            "type": "string",
+            "enum": ["pending", "in_progress", "review", "completed", "blocked"]
+          },
+          "priority": {
+            "type": "string",
+            "enum": ["critical", "high", "medium", "low"]
+          },
+          "harness_eligible": {
+            "type": "boolean",
+            "description": "Whether this task can be delegated to the Harness",
+            "default": false
+          }
+        }
+      }
+    },
+    "billing": {
+      "type": "object",
+      "description": "Billing and fee information",
+      "properties": {
+        "fee_arrangement": {
+          "type": "string",
+          "enum": ["hourly", "flat_fee", "contingency", "retainer", "hybrid"]
+        },
+        "budget": {
+          "type": "number",
+          "description": "Approved budget in USD"
+        },
+        "billed_to_date": {
+          "type": "number",
+          "description": "Total billed amount in USD"
+        }
+      }
+    },
+    "notes": {
+      "type": "array",
+      "description": "Case notes and observations",
+      "items": {
+        "type": "object",
+        "properties": {
+          "timestamp": { "type": "string", "format": "date-time" },
+          "author": { "type": "string" },
+          "content": { "type": "string" },
+          "visibility": {
+            "type": "string",
+            "enum": ["private", "team", "client"]
+          }
+        }
+      }
+    },
+    "harness_config": {
+      "type": "object",
+      "description": "Harness-specific configuration for this case",
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": ["shadow", "production"],
+          "default": "shadow"
+        },
+        "allowed_tasks": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Task types the Harness can perform on this case"
+        },
+        "restricted_data": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Data fields that should be redacted from Harness context"
+        },
+        "auto_draft": {
+          "type": "boolean",
+          "description": "Whether Harness should proactively draft documents",
+          "default": false
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "System metadata",
+      "properties": {
+        "created_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" },
+        "created_by": { "type": "string" },
+        "version": { "type": "integer" }
+      }
+    }
+  }
+}

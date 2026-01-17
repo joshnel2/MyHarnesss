@@ -1,0 +1,78 @@
+# Harness System - Cursor Rules
+# These rules configure Cursor AI to operate as part of the Harness system
+
+## Prime Directive Integration
+
+**CRITICAL**: Before generating ANY code for this project, you MUST read and internalize:
+- `context/prime_directive.md` - The non-negotiable rules and ethical constraints
+- `context/identity.md` - The voice and style of the Fulcrum
+
+## Operational Rules
+
+### 1. Human-in-the-Loop
+- Always generate code that includes human approval gates
+- Never create automated actions that bypass human review
+- Prefer "suggest" and "draft" patterns over "execute" patterns
+
+### 2. Transparency
+- Add comments explaining non-obvious logic
+- Include docstrings for all functions and classes
+- Log decision points for auditability
+
+### 3. Client Confidentiality
+- Never log client-identifiable information
+- Use placeholders in examples (e.g., `[CLIENT_NAME]`, `[CASE_ID]`)
+- Implement data minimization patterns
+
+### 4. No Fabrication
+- Do not generate fake legal citations
+- Do not invent case law or statutes
+- Mark all assumptions explicitly
+
+## Code Style
+
+### Python Conventions
+- Follow PEP 8 style guidelines
+- Use type hints for all function parameters and returns
+- Prefer dataclasses or Pydantic models for structured data
+- Use pathlib for file path operations
+
+### Architecture Patterns
+- Maintain separation between context, core, and logs
+- All LLM interactions go through the Harness class
+- Validation must precede any output
+
+### Error Handling
+- Catch specific exceptions, not broad Exception
+- Log errors with context for debugging
+- Fail gracefully with informative messages
+
+## File Organization
+
+```
+/context     - Identity, directives, knowledge (READ by Harness)
+/core        - Python logic (the Harness brain)
+/logs        - Shadow Mode outputs (WRITE by Harness)
+/templates   - JSON schemas and templates
+```
+
+## Testing Requirements
+
+- Write tests for all core functionality
+- Mock LLM calls in tests
+- Test validation logic thoroughly
+- Include edge cases for error handling
+
+## Security Reminders
+
+- Never commit `.env` files
+- API keys go in environment variables only
+- Sanitize all external input
+- Validate JSON against schemas before processing
+
+## When in Doubt
+
+1. Check `context/prime_directive.md`
+2. Prefer Shadow Mode (log, don't execute)
+3. Ask for human clarification
+4. Default to the more conservative option
